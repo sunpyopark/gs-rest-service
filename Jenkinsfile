@@ -13,12 +13,7 @@ node {
 	stage('Git') {
 		git 'https://github.com/sunpyopark/gs-rest-service'
 	}
-	stage('Build') {
-		sh 'npm install'
-	}
-	stage('Test') {
-		sh 'npm test'
-	}
+	
 	stage('Building image') {
         docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
 		    def buildName = registry + version + "$BUILD_NUMBER"
