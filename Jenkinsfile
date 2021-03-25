@@ -15,7 +15,8 @@ node {
 	}
 	
 	stage('Build'){
-           sh "mvn -Dmaven.test.failure.ignore=true install"
+	   sh "echo 'aaaa'"
+           // sh "mvn -Dmaven.test.failure.ignore=true install"
         }
 
         stage('Building image') {
