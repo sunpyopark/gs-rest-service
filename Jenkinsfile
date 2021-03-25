@@ -14,6 +14,19 @@ node {
 		git 'https://github.com/sunpyopark/gs-rest-service'
 	}
 	
+	stage('Restore packages'){
+           sh "dotnet restore /var/lib/jenkins/workspace/dotnet-coreapp/aspnetcoreapp.csproj"
+        }
+
+        stage('Clean'){
+           sh "dotnet clean /var/lib/jenkins/workspace/dotnet-coreapp/aspnetcoreapp.csproj"
+        }
+
+        stage('Build'){
+           sh "dotnet build /var/lib/jenkins/workspace/dotnet-coreapp/aspnetcoreapp.csproj"
+        }
+
+	
 	stage('Building image') {
         docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
 		    def buildName = registry + version + "$BUILD_NUMBER"
