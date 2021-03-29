@@ -14,9 +14,9 @@ node {
 		git 'https://github.com/sunpyopark/gs-rest-service'
 	}
 	
-	stage('Build'){
-	   sh "echo 'aaaa'"
-           // sh "mvn -Dmaven.test.failure.ignore=true install"
+	stage('Maven Clean'){
+	   // sh "echo 'aaaa'"
+           sh "mvn clean -f /var/lib/jenkins/workspace/java-coreapp/complete/pom.xml "
         }
 
         stage('Building image') {
