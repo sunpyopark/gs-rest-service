@@ -18,6 +18,16 @@ node {
 	   // sh "echo 'aaaa'"
            sh "mvn clean -f /var/lib/jenkins/workspace/java-coreapp/complete/pom.xml "
         }
+	
+	stage('Maven Install'){
+	   // sh "echo 'aaaa'"
+           sh "mvn install -f /var/lib/jenkins/workspace/java-coreapp/complete/pom.xml "
+        }
+	
+	stage('Maven Package'){
+	   // sh "echo 'aaaa'"
+           sh "mvn package -f /var/lib/jenkins/workspace/java-coreapp/complete/pom.xml "
+        }
 
         stage('Building image') {
         docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
